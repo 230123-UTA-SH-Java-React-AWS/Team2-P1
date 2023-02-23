@@ -1,5 +1,7 @@
 package com.revature.model;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,19 +19,21 @@ public class BankAccount {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, 
     generator = "bankaccount_sequence")
 
-    private float balance;
+    private BigDecimal balance;
     private long accID;
     private long userID;
     private AccType accType;
+    
+    public BankAccount(){}
 
-    public BankAccount(AccType accType, float balance, Long accID, Long userID) {
+    public BankAccount(AccType accType, BigDecimal balance, Long accID, Long userID) {
         this.accType=accType;
         this.balance=balance;
         this.accID=accID;
         this.userID=userID;
     }
 
-    public BankAccount(AccType accType, float balance, Long userID) {
+    public BankAccount(AccType accType, BigDecimal balance, Long userID) {
         this.accType=accType;
         this.balance = balance;
         this.userID = userID;
@@ -38,8 +42,8 @@ public class BankAccount {
     public AccType getAccType() {return accType;}
     public void setAccType(AccType accType) {this.accType = accType;}
 
-    public float getAmount() {return balance;}
-    public void setAmount(float balance) {this.balance = balance;}
+    public BigDecimal getAmount() {return balance;}
+    public void setAmount(BigDecimal balance) {this.balance = balance;}
 
     public long getAccID() {return accID;}
     public void setAccID(int accID) {this.accID = accID;}

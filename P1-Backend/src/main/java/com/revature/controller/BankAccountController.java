@@ -13,9 +13,3 @@ public class BankAccountController {
         this.bankAccountService=bankAccountService;
     }
 }
-
-    @Autowired
-    public BankAccountController(BankAccountService bankAccountService) {
-        this.bankAccountService = bankAccountService;
-    }
-}
