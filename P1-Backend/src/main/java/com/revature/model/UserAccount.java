@@ -1,8 +1,8 @@
 package com.revature.model;
 
 import java.time.LocalDate;
+import java.util.Collection;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,10 +10,13 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 
 @Entity
 @Table
-public class UserAccount {
+public class UserAccount implements UserDetails {
 
     @Id
     @SequenceGenerator(name = "useraccount_sequence", sequenceName = "useraccount_sequence", allocationSize = 1)
@@ -31,7 +34,12 @@ public class UserAccount {
     private String phoneNumber;
 
     public UserAccount() {
-        
+
+    }
+    
+    public UserAccount(String username, String password) {
+        this.username = username;
+        this.password = password;
     }
 
 
@@ -166,6 +174,36 @@ public class UserAccount {
                 + ", email: " + email 
                 + ", phoneNumber: " + phoneNumber + "]";
         return s;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getAuthorities'");
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'isAccountNonExpired'");
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'isAccountNonLocked'");
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'isCredentialsNonExpired'");
+    }
+
+    @Override
+    public boolean isEnabled() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'isEnabled'");
     }
     
 }
