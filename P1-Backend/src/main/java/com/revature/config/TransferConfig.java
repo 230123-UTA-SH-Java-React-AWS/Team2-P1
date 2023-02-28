@@ -46,4 +46,5 @@ public class TransferConfig {
             tService.sendMoneyBetweenTwoAccounts(1L, 2L, new BigDecimal(30));
         };
     }
+
 }

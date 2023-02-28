@@ -14,8 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.revature.model.BankAccount;
 import com.revature.service.BankAccountService;
 
-
-
 @RestController
 @RequestMapping("api/v1/bankaccount")
 public class BankAccountController {

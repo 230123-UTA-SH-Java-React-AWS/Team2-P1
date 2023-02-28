@@ -8,13 +8,47 @@ import {
   Route,
   Link,
 } from "react-router-dom";
+import {
+  RecoilRoot,
+  atom,
+  selector,
+  useRecoilState,
+  useRecoilValue,
+} from "recoil";
 import Home from "./components/Home/Home";
 import Login from "./components/Login/Login";
+import Profile from "./components/Profile/Profile";
+import ClientError from "./components/ClientError/ClientError";
+import Income from "./components/Income/Income";
+import Expenses from "./components/Expenses/Expenses";
+import Accounts from "./components/Accounts/Accounts";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />,
+    element: <Register />,
+  },
+  {
+    path: "/profile",
+    element: <Profile />,
+  },
+  {
+    path: "/error",
+    element: <ClientError />,
+  },
+  {
+    path: "/income",
+    element: <Income />,
+  },
+  {
+    path: "/expenses",
+    element: <Expenses />,
+    //
+  },
+  {
+    path: "/accounts",
+    element: <Accounts />,
+    //
   },
 ]);
 
@@ -22,21 +56,24 @@ const authRouter = createBrowserRouter([
   {
     path: "/",
     element: <Register />, //home route
-    children: [
-      {
-        path: "/register",
-        element: <Register />,
-      },
-      {
-        path: "/login",
-        element: <Login />,
-      },
-    ],
+  },
+  {
+    path: "/register",
+    element: <Register />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
   },
 ]);
 
+const userState = atom<{}>({
+  key: "userState", // unique ID (with respect to other atoms/selectors)
+  default: "", // default value (aka initial value)
+});
+
 function App() {
-  const [authenticated, setAuthenticated] = useState(false);
+  const [authenticated, setAuthenticated] = useState(true); //initially false
   /*
   (make global state )
   Check local storage to see if user instance exists,
@@ -50,10 +87,12 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <Header />
-      <RouterProvider router={authenticated ? router : authRouter} />
-    </div>
+    <RecoilRoot>
+      <div className=" mt-20">
+        <Header />
+        <RouterProvider router={authenticated ? router : authRouter} />
+      </div>
+    </RecoilRoot>
   );
 }
 
