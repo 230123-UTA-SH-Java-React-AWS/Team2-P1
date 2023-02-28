@@ -1,0 +1,18 @@
+.expenses-section {
+    background-color: var(--primary-clr);
+    padding: 15px 0 15px 5%;
+}
+
+.expenses-heading {
+    color: var(--font-clr);
+    font-size: 20px;
+}
+
+.expenses-text {
+    color: var(--font-clr);
+    font-size: 14px;
+}
+
+.expenses-table {
+    width: 88%;
+}

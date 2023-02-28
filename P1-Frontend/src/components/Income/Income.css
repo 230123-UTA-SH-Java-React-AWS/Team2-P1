@@ -38,8 +38,8 @@
 }
 
 .income-content {
-    border-bottom: 1px solid var(--tertiary-clr);
-    padding: 15px 0;
+   
+    padding: 15px 20PX 0 0;
 }
 .table-content {
     display: flex;
@@ -54,7 +54,7 @@
 
 .income-text {
     color: var(--font-clr);
-    margin-right: 20px;
+    
 }
 
 @media only screen and (min-width: 700px) {
