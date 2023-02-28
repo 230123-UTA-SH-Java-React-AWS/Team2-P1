@@ -72,7 +72,7 @@ public class UserAccountService {
                 String jsonFieldName = jsonFields.next();
                 String s = updateForm.get(jsonFieldName).asText();
 
-                if (s.isBlank()) {
+                if (s.isEmpty()) {
                     continue;
                 } else {
                     switch (jsonFieldName) {
